@@ -19,22 +19,22 @@ class QuestionViewController: UIViewController {
     @IBOutlet var multipleLabels: [UILabel]!
     @IBOutlet var multipleSwitches: [UISwitch]!
     
-    @IBOutlet weak var rangerdStackView: UIStackView!
+    @IBOutlet weak var rangedStackView: UIStackView!
     @IBOutlet var rangedLabels: [UILabel]!
     @IBOutlet weak var rangedSlider: UISlider! {
         didSet {
-            let answerCount = Float(currenrAnswers.count - 1)
+            let answerCount = Float(currentAnswers.count - 1)
             
             rangedSlider.value = answerCount / 2
             rangedSlider.maximumValue = answerCount
         }
     }
     
-    @IBOutlet weak var quedtionProgerssView: UIProgressView!
+    @IBOutlet weak var questionProgressView: UIProgressView!
     
     private let questions = Question.getQuestions()
     private var questionIndex = 0
-    private var currenrAnswers: [Answer] {
+    private var currentAnswers: [Answer] {
         questions[questionIndex].answers
     }
     private var answersChooser: [Answer] = []
@@ -44,16 +44,16 @@ class QuestionViewController: UIViewController {
         setupUI()
     }
  
-    @IBAction func singleAnnserButtonBressed(_ sender: UIButton) {
+    @IBAction func singleAnswerButtonPressed(_ sender: UIButton) {
         guard let buttonIndex = singleButtons.firstIndex(of: sender) else { return }
-        let currentAnswer = currenrAnswers[buttonIndex]
+        let currentAnswer = currentAnswers[buttonIndex]
         answersChooser.append(currentAnswer)
         
         nextQuestion()
     }
     
     @IBAction func multipleAnserButtonBressed() {
-        for (multipleSwitch, answer) in zip(multipleSwitches, currenrAnswers) {
+        for (multipleSwitch, answer) in zip(multipleSwitches, currentAnswers) {
             if multipleSwitch.isOn {
                 answersChooser.append(answer)
             }
@@ -64,7 +64,7 @@ class QuestionViewController: UIViewController {
     
     @IBAction func rangedAnswerButtonPressed() {
         let index = lrintf(rangedSlider.value)
-        answersChooser.append(currenrAnswers[index])
+        answersChooser.append(currentAnswers[index])
         
         nextQuestion()
     }
@@ -73,7 +73,7 @@ class QuestionViewController: UIViewController {
 // MARK: - Private Methods
 extension QuestionViewController {
     private func setupUI() {
-        for stackView in [singleStackView, multipleStackView, rangerdStackView] {
+        for stackView in [singleStackView, multipleStackView, rangedStackView] {
             stackView?.isHidden = true
         }
         
@@ -81,7 +81,7 @@ extension QuestionViewController {
         questionLabel.text = currentQuestion.title
         
         let totalProgress = Float(questionIndex) / Float(questions.count)
-        quedtionProgerssView.setProgress(totalProgress, animated: true)
+        questionProgressView.setProgress(totalProgress, animated: true)
         
         title = "Вопрос № \(questionIndex + 1) из \(questions.count)"
         
@@ -90,9 +90,9 @@ extension QuestionViewController {
     
     private func showCurrentAnswers(for type: ResponseType) {
         switch type {
-        case .single: showSingleStackView(with: currenrAnswers)
-        case .multiple: showMultipleStackView(with: currenrAnswers)
-        case .ranged: showRangedStackView(with: currenrAnswers)
+        case .single: showSingleStackView(with: currentAnswers)
+        case .multiple: showMultipleStackView(with: currentAnswers)
+        case .ranged: showRangedStackView(with: currentAnswers)
         }
     }
     
@@ -124,7 +124,7 @@ extension QuestionViewController {
     }
     
     private func showRangedStackView(with answers: [Answer]) {
-        rangerdStackView.isHidden = false
+        rangedStackView.isHidden = false
         
         rangedLabels.first?.text = answers.first?.title
         rangedLabels.last?.text = answers.last?.title

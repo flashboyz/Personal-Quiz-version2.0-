@@ -61,7 +61,7 @@
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.95863646268844604" green="0.83377319574356079" blue="0.95799785852432251" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="fcs-4Q-JO4" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="1XE-WT-8UG"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="cIj-l9-kE7" secondAttribute="trailing" constant="20" id="Aow-6G-qmi"/>
@@ -97,28 +97,28 @@
                                         <rect key="frame" x="117" y="0.0" width="46" height="30"/>
                                         <state key="normal" title="Button"/>
                                         <connections>
-                                            <action selector="singleAnnserButtonBressed:" destination="jAp-U9-pn4" eventType="touchUpInside" id="LD4-7F-gfz"/>
+                                            <action selector="singleAnswerButtonPressed:" destination="jAp-U9-pn4" eventType="touchUpInside" id="LD4-7F-gfz"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XQu-7m-kST">
                                         <rect key="frame" x="117" y="46" width="46" height="30"/>
                                         <state key="normal" title="Button"/>
                                         <connections>
-                                            <action selector="singleAnnserButtonBressed:" destination="jAp-U9-pn4" eventType="touchUpInside" id="WoW-GQ-hpu"/>
+                                            <action selector="singleAnswerButtonPressed:" destination="jAp-U9-pn4" eventType="touchUpInside" id="WoW-GQ-hpu"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="35k-Ef-9KE">
                                         <rect key="frame" x="117" y="92" width="46" height="30"/>
                                         <state key="normal" title="Button"/>
                                         <connections>
-                                            <action selector="singleAnnserButtonBressed:" destination="jAp-U9-pn4" eventType="touchUpInside" id="PWq-ac-llq"/>
+                                            <action selector="singleAnswerButtonPressed:" destination="jAp-U9-pn4" eventType="touchUpInside" id="PWq-ac-llq"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ncN-r4-v9q">
                                         <rect key="frame" x="117" y="138" width="46" height="30"/>
                                         <state key="normal" title="Button"/>
                                         <connections>
-                                            <action selector="singleAnnserButtonBressed:" destination="jAp-U9-pn4" eventType="touchUpInside" id="XQW-po-d2D"/>
+                                            <action selector="singleAnswerButtonPressed:" destination="jAp-U9-pn4" eventType="touchUpInside" id="XQW-po-d2D"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -265,10 +265,10 @@
                     <navigationItem key="navigationItem" title="Вопрос №" id="xQU-A5-llR"/>
                     <connections>
                         <outlet property="multipleStackView" destination="vpc-Le-V4v" id="LLY-Dn-EMg"/>
-                        <outlet property="quedtionProgerssView" destination="gfZ-LU-cm8" id="zTv-HZ-GTC"/>
                         <outlet property="questionLabel" destination="gpU-sK-UgU" id="zHj-UH-M7J"/>
+                        <outlet property="questionProgressView" destination="gfZ-LU-cm8" id="zTv-HZ-GTC"/>
                         <outlet property="rangedSlider" destination="0GE-1R-NgM" id="t8U-yJ-AM7"/>
-                        <outlet property="rangerdStackView" destination="heT-0A-ilv" id="78L-Ri-5TY"/>
+                        <outlet property="rangedStackView" destination="heT-0A-ilv" id="78L-Ri-5TY"/>
                         <outlet property="singleStackView" destination="Vfg-Nh-cbf" id="GMd-lL-Hvu"/>
                         <outletCollection property="singleButtons" destination="cA5-15-dXM" collectionClass="NSMutableArray" id="CZ8-fA-oiR"/>
                         <outletCollection property="singleButtons" destination="XQu-7m-kST" collectionClass="NSMutableArray" id="Dcw-Wq-9Cx"/>
