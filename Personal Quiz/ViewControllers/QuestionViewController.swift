@@ -37,17 +37,19 @@ class QuestionViewController: UIViewController {
     private var currentAnswers: [Answer] {
         questions[questionIndex].answers
     }
-    private var answersChooser: [Answer] = []
+    private var answersChoosen: [Answer] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
     }
+    
+  
  
     @IBAction func singleAnswerButtonPressed(_ sender: UIButton) {
         guard let buttonIndex = singleButtons.firstIndex(of: sender) else { return }
         let currentAnswer = currentAnswers[buttonIndex]
-        answersChooser.append(currentAnswer)
+        answersChoosen.append(currentAnswer)
         
         nextQuestion()
     }
@@ -55,7 +57,7 @@ class QuestionViewController: UIViewController {
     @IBAction func multipleAnserButtonBressed() {
         for (multipleSwitch, answer) in zip(multipleSwitches, currentAnswers) {
             if multipleSwitch.isOn {
-                answersChooser.append(answer)
+                answersChoosen.append(answer)
             }
         }
         
@@ -64,7 +66,7 @@ class QuestionViewController: UIViewController {
     
     @IBAction func rangedAnswerButtonPressed() {
         let index = lrintf(rangedSlider.value)
-        answersChooser.append(currentAnswers[index])
+        answersChoosen.append(currentAnswers[index])
         
         nextQuestion()
     }
@@ -129,4 +131,13 @@ extension QuestionViewController {
         rangedLabels.first?.text = answers.first?.title
         rangedLabels.last?.text = answers.last?.title
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.destination is ResultsViewController {
+            let vc = segue.destination as? ResultsViewController
+            vc?.answersChoosen = answersChoosen
+        }
+    }
 }
+
+
